@@ -4,7 +4,7 @@
   "width": 800,
   "height": 600,
   "data": {
-    "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/js/custom.geo.topo.json",
+    "url": "https://github.com/laytonqian/vis2/blob/master/js/custom.topo.json",
     "format": {
           "type": "topojson",
           "feature": "custom.geo"
@@ -14,7 +14,7 @@
       "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/data/covid_10_10_2020.csv"
+          "url": "https://github.com/laytonqian/vis2/blob/master/data/renewable_energy_population_clean.csv"
         },
         "key": "Country",
         "fields": ["Hydro_TW, Solar_TW, Wind_TW, Other_TW, Total_TW, Population"]
