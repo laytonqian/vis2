@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Renewable Energy Consumption Per Capita",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/js/custom.geo.topo.json",
+    "format": {
+          "type": "topojson",
+          "feature": "custom.geo"
+        }
+  },
+  "transform": [{
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/data/covid_10_10_2020.csv"
+        },
+        "key": "Country",
+        "fields": ["Hydro_TW, Solar_TW, Wind_TW, Other_TW, Total_TW, Population"]
+      }
+    },
+    {"calculate": "datum.Total_TW / Population", "as": "Terrawatts Per Capita"}
+  ],
+  "projection": {
+    "type": "equalEarth"
+  },
+  "mark": {
+    "type": "geoshape"
+    }, 
+  "encoding": {
+    "color": {
+      "field": "Terrawatts Per Capita",
+      "type": "quantitative",
+      "scale": {"type": "log"}
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "Country"},
+      {"field": "Total_TW", "type": "quantitative"},
+      {"field": "Hydro_TW", "type": "quantitative"},
+      {"field": "Solar_TW", "type": "quantitative"},
+      {"field": "Wind_TW", "type": "quantitative"},
+      {"field": "Other_TW", "type": "quantitative"},
+      {"field": "Population", "type": "quantitative"}
+      
+    ]
+  }
+
+}
