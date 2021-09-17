@@ -4,7 +4,7 @@
   "width": 800,
   "height": 600,
   "data": {
-    "url": "https://github.com/laytonqian/vis2/blob/master/js/custom.topo.json",
+    "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/js/custom.topo.json",
     "format": {
           "type": "topojson",
           "feature": "custom.geo"
@@ -14,7 +14,7 @@
       "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "https://github.com/laytonqian/vis2/blob/master/data/renewable_energy_population_clean.csv"
+          "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_clean.csv"
         },
         "key": "Country",
         "fields": ["Hydro_TW, Solar_TW, Wind_TW, Other_TW, Total_TW, Population"]
