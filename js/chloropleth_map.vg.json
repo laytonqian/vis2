@@ -1,8 +1,22 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Renewable Energy Consumption Per Capita",
-  "width": 800,
-  "height": 600,
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "width": 800,
+ "height": 500,
+ "title": "Renewable Energy Consumption 2018",
+ "projection": {"type": "equalEarth"},
+
+ "layer": [
+ {
+ "data": {
+ "url":
+"https://raw.githubusercontent.com/laytonqian/vis2/master/js/custom.topo.json"
+,
+ "format": {"type": "topojson", "feature": "custom.geo"}
+ },
+ "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+ },
+ {
+
   "data": {
     "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/js/custom.topo.json",
     "format": {
@@ -17,33 +31,37 @@
           "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_clean.csv"
         },
         "key": "Country",
-        "fields": ["Hydro_TW, Solar_TW, Wind_TW, Other_TW, Total_TW, Population"]
+        "fields": ["Hydro_TW", "Solar_TW", "Wind_TW", "Other_TW", "Total_TW", "Population"]
       }
     },
-    {"calculate": "datum.Total_TW / Population", "as": "Terrawatts Per Capita"}
+    {"calculate": "datum.Total_TW / datum.Population * 100000", "as": "Terrawatts Per 100,000 Population"}
   ],
   "projection": {
     "type": "equalEarth"
   },
+
   "mark": {
     "type": "geoshape"
     }, 
   "encoding": {
     "color": {
-      "field": "Terrawatts Per Capita",
+      "field": "Terrawatts Per 100,000 Population",
       "type": "quantitative",
       "scale": {"type": "log"}
     },
+      
     "tooltip": [
-      {"field": "properties.name", "type": "nominal", "title": "Country"},
-      {"field": "Total_TW", "type": "quantitative"},
+         {"field": "properties.name", "type": "nominal", "title": "Country"},
+      {"field": "Terrawatts Per 100,000 Population", "type": "quantitative"},
       {"field": "Hydro_TW", "type": "quantitative"},
       {"field": "Solar_TW", "type": "quantitative"},
       {"field": "Wind_TW", "type": "quantitative"},
       {"field": "Other_TW", "type": "quantitative"},
+       {"field": "Total_TW", "type": "quantitative"},
       {"field": "Population", "type": "quantitative"}
       
     ]
   }
-
+ }
+ ]
 }
