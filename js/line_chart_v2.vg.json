@@ -4,7 +4,7 @@
     "height": 500,
     "title": "Renewable Energy Consumption",
     "data": {
-      "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_clean_long.csv"
+      "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_final_v3.csv"
     },
     "transform": [
     {"filter": "datum.Year >0"}
@@ -45,4 +45,3 @@
     
     "config": {}
   }
-
