@@ -6,9 +6,6 @@
     "data": {
       "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_final_v3.csv"
     },
-    "transform": [
-    {"filter": "datum.Year >0"}
-  ],
     "layer": [
         {   "mark": {
             "type": "line"
@@ -24,22 +21,19 @@
                 "aggregate": "sum", "field": "Terawatt Hours",
                 "type": "quantitative",
                 "title": "Terawatt Hours",
-                "scale": {"type": "symlog"}
+                "scale": {"type": "sqrt"}
                 
-            },
+            }
+            ,
             "color": {
                 "type": "nominal",
                 "field": "Renewable Source"
-            },
-            "tooltip": [
-                {"aggregate": "sum", "field": "Terawatt Hours", "type": "quantitative", "title": "Terawatt Hours"},
-                {"field": "Renewable Source", "type": "nominal"},
-                {"field": "Year", "timeUnit": "year", "title": "Year"}
-      
-            ]
-        
+            }
+         
             }
         }
+          
+      
         
     ],
     
