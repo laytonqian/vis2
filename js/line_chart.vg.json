@@ -1,40 +1,48 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 500,
+    "title": "Renewable Energy Consumption",
     "data": {
-      "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_clean_long.csv"
+      "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_final.csv"
     },
-    "params": [
-    {
-      "name": "Year",
-      "value": 0,
-      "bind": {
-        "input": "range",
-        "min": 1965,
-        "max": 2018,
-        "step": 1,
-        "name": "Year: "
-      }
-    }],
-    "width": "container",
-    "mark": {
-      "type": "line",
-      "interpolate": "monotone"
-    },
-     "transform": [
-    {"filter": "datum.Year > Year"}
+    "transform": [
+    {"filter": "datum.Year > 0"}
   ],
-    "encoding": {
-      "x": {
-        "field": "Year",
-        "timeUnit": "year"
-      },
-      "y": {
-        "field": "Terawatt Hours"
-      },
-      "color": {
-        "type": "nominal",
-        "field": "Renewable Source"
-      }
-    },
+    "layer": [
+        {   "mark": {
+            "type": "line"
+
+            },
+            "encoding": {
+            "x": {
+                "field": "Year",
+                "timeUnit": "year",
+                "title": "Year"
+            },
+            "y": {
+                "aggregate": "sum", "field": "Terawatt Hours",
+                "type": "quantitative",
+                "title": "Terawatt Hours",
+                "scale": {"type": "symlog"}
+                
+            },
+            "color": {
+                "type": "nominal",
+                "field": "Renewable Source"
+            },
+            "tooltip": [
+                {"aggregate": "sum", "field": "Terawatt Hours", "type": "quantitative", "title": "Terawatt Hours"},
+                {"field": "Renewable Source", "type": "nominal"},
+                {"field": "Year", "timeUnit": "year", "title": "Year"}
+      
+            ]
+        
+            }
+        }
+        
+    ],
+    
     "config": {}
   }
+
