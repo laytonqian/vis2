@@ -1,0 +1,40 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_clean_long.csv"
+    },
+    "params": [
+    {
+      "name": "Year",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 1965,
+        "max": 2018,
+        "step": 1,
+        "name": "Year: "
+      }
+    }],
+    "width": "container",
+    "mark": {
+      "type": "line",
+      "interpolate": "monotone"
+    },
+     "transform": [
+    {"filter": "datum.Year > Year"}
+  ],
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "timeUnit": "year"
+      },
+      "y": {
+        "field": "Terawatt Hours"
+      },
+      "color": {
+        "type": "nominal",
+        "field": "Renewable Source"
+      }
+    },
+    "config": {}
+  }
