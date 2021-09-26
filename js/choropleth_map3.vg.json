@@ -1,0 +1,66 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "width": 800,
+ "height": 500,
+ "title": "Renewable Energy Consumption 2018",
+ "projection": {"type": "equalEarth"},
+ "params": [
+  {
+    "name": "Year_Selection",
+    "value": 2018,
+    "bind": {"input": "range", "min": 1965, "max": 2018, "step": 1}
+    },
+    {
+    "name": "Renewable_Source_Selection",
+    "value": "Hydro",
+    "bind": {"input": "select", "options": ["Hydro", "Solar", "Wind"]}
+    }
+ ],
+ "layer": [
+   {
+    "data": {
+    "url":
+    "https://raw.githubusercontent.com/laytonqian/vis2/master/js/custom.topo.json"
+    ,
+    "format": {"type": "topojson", "feature": "custom.geo"}
+    },
+    "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+   {
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_final_v4.csv"
+  },
+  "transform": [
+    {
+      "lookup": "Country_Code",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/js/custom.topo.json",
+          "format": {"type": "topojson", "feature": "custom.geo"}
+        },
+        "key": "properties.iso_a3"
+      },
+      "as": "geo"
+    },
+    {"filter": "datum.Year == Year_Selection"},
+    {"filter": "datum.Renewable_Source == Renewable_Source_Selection"},
+    {"calculate": "datum.Terawatt_Hours / datum.Population * 100000", "as": "Terrawatts Per 100,000 Population"}
+  ],
+  "projection": {
+    "type": "equalEarth"
+  },
+
+  "mark": {
+    "type": "geoshape"
+    }, 
+  "encoding": {
+    "color": {
+      "field": "Terrawatts Per 100,000 Population",
+      "type": "quantitative",
+      "scale": {"type": "log"}
+    }
+  }
+ }
+ ]
+}

@@ -4,7 +4,7 @@
  "height": 500,
  "title": "Renewable Energy Consumption 2018",
  "projection": {"type": "equalEarth"},
-  "params": [
+ "params": [
   {
     "name": "Year_Selection",
     "value": 2018,
@@ -15,7 +15,7 @@
     "value": "Hydro",
     "bind": {"input": "select", "options": ["Hydro", "Solar", "Wind"]}
     }
-],
+ ],
  "layer": [
  {
  "data": {
@@ -39,15 +39,14 @@
       "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_clean.csv"
+          "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_final_v4.csv"
         },
-        "key": "Country",
-        "fields": ["Hydro_TW", "Solar_TW", "Wind_TW", "Other_TW", "Total_TW", "Population"]
+        "key": "Country"
       }
     },
-    {"filter": "datum.Year == Year_selection"},
-    {"filter": "datum.Renewable Source == Renewable_Source_Selection"},
-    {"calculate": "datum.Total_TW / datum.Population * 100000", "as": "Terrawatts Per 100,000 Population"}
+    {"filter": "datum.Year == Year_Selection"},
+    {"filter": "datum.Renewable_Source == Renewable_Source_Selection"},
+    {"calculate": "datum.Terawatt_Hours / datum.Population * 100000", "as": "Terrawatts Per 100,000 Population"}
   ],
   "projection": {
     "type": "equalEarth"
@@ -61,19 +60,7 @@
       "field": "Terrawatts Per 100,000 Population",
       "type": "quantitative",
       "scale": {"type": "log"}
-    },
-      
-    "tooltip": [
-         {"field": "properties.name", "type": "nominal", "title": "Country"},
-      {"field": "Terrawatts Per 100,000 Population", "type": "quantitative"},
-      {"field": "Hydro_TW", "type": "quantitative"},
-      {"field": "Solar_TW", "type": "quantitative"},
-      {"field": "Wind_TW", "type": "quantitative"},
-      {"field": "Other_TW", "type": "quantitative"},
-       {"field": "Total_TW", "type": "quantitative"},
-      {"field": "Population", "type": "quantitative"}
-      
-    ]
+    }
   }
  }
  ]

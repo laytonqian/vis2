@@ -2,13 +2,10 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 800,
     "height": 500,
-    "title": "Renewable Energy Consumption",
+    "title": "Renewable Energy Consumption 1965 - 2018",
     "data": {
-      "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_clean_long.csv"
+      "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_final_v4.csv"
     },
-    "transform": [
-    {"filter": "datum.Year >0"}
-  ],
     "layer": [
         {   "mark": {
             "type": "line"
@@ -23,13 +20,15 @@
             "y": {
                 "aggregate": "sum", "field": "Terawatt Hours",
                 "type": "quantitative",
-                "title": "Terawatt Hours",
+                "title": "Consumption in Terawatt Hours",
                 "scale": {"type": "symlog"}
                 
-            },
+            }
+            ,
             "color": {
                 "type": "nominal",
-                "field": "Renewable Source"
+                "field": "Renewable Source",
+                "scale": {"range": ["#e41a1c","#377eb8","#4daf4a","#984ea3","#ff7f00"]}
             },
             "tooltip": [
                 {"aggregate": "sum", "field": "Terawatt Hours", "type": "quantitative", "title": "Terawatt Hours"},
@@ -37,12 +36,13 @@
                 {"field": "Year", "timeUnit": "year", "title": "Year"}
       
             ]
-        
+         
             }
         }
+          
+      
         
     ],
     
     "config": {}
   }
-
