@@ -54,7 +54,7 @@
       },
     "color": {"field": "Terrawatts Per 100,000 Population", "type": "quantitative", "scale": {"type": "log"}, "title":"Terrawatts(TWh) Per 100,000 Population"}, 
     "tooltip": [
-      {"field": "Terrawatts Per 100,000 Population", "type": "quantitative", "title": "TWh Per 100,000 Population"},
+      {"field": "Terrawatts Per 100,000 Population", "type": "quantitative", "title": "TWh Per 100,000 Population", "format": ".20f"},
       {"field": "Renewable_Source", "type": "nominal", "title": "Renewable Source"},
       {"field": "Country", "type": "nominal", "title": "Country"},
       {"field": "Population", "type": "quantitative"}

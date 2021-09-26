@@ -3,19 +3,40 @@
     "width": 800,
     "height": 500,
     "title": "Renewable Energy Consumption 1965 - 2018",
+    
     "data": {
       "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_final_v5.csv"
     },
-    
+    "params": [
+        {
+            "name": "Year_Selection",
+            "value": 2018,
+            "bind": {"input": "range", "min": 1965, "max": 2018, "step": 1}
+        },
+        {
+            "name": "Renewable_Source_Selection",
+            "value": null,
+            "bind": {
+                "input": "select", 
+                "options": [null, "Hydro", "Solar", "Wind", "Other", "All"],
+                "labels": ["Show All", "Hydro", "Solar", "Wind", "Other", "All"],
+                "name": "Renewable Source Selection: "
+            }
+        }
+    ],
     "layer": [
         {   "mark": {
-            "type": "line"
+            "type": "line",
+            "point": {
+                "filled": false,
+                "fill": "white"
+            }
 
             },
             "transform": [
-                {"filter": "datum.Year == Year_Selection"},
-                {"filter": "datum.Renewable_Source == Renewable_Source_Selection"}
-            ],  
+                {"filter": {"timeUnit": "year", "field": "Year", "range": [0,"Year_Selection"] }},
+                {"filter": "Renewable_Source_Selection == null || datum.Renewable_Source == Renewable_Source_Selection"}
+            ],
             "encoding": {
             "x": {
                 "field": "Year",
@@ -25,15 +46,13 @@
             "y": {
                 "aggregate": "sum", "field": "Terawatt_Hours",
                 "type": "quantitative",
-                "title": "Consumption in Terawatt Hours",
-                "scale": {"type": "symlog"}
+                "title": "Consumption in Terawatt Hours"
                 
             }
             ,
             "color": {
                 "type": "nominal",
-                "field": "Renewable_Source",
-                "scale": {"range": ["#e41a1c","#377eb8","#4daf4a","#984ea3","#ff7f00"]}
+                "field": "Renewable_Source"
             },
             "tooltip": [
                 {"aggregate": "sum", "field": "Terawatt_Hours", "type": "quantitative", "title": "Terawatt Hours"},
@@ -44,6 +63,8 @@
          
             }
         }
+
+        
           
       
         
