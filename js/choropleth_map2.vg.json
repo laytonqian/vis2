@@ -17,16 +17,16 @@
     }
  ],
  "layer": [
- {
- "data": {
- "url":
-"https://raw.githubusercontent.com/laytonqian/vis2/master/js/custom.topo.json"
-,
- "format": {"type": "topojson", "feature": "custom.geo"}
- },
- "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
- },
- {
+   {
+    "data": {
+    "url":
+    "https://raw.githubusercontent.com/laytonqian/vis2/master/js/custom.topo.json"
+    ,
+    "format": {"type": "topojson", "feature": "custom.geo"}
+    },
+    "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+   {
 
   "data": {
     "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/js/custom.topo.json",
@@ -60,7 +60,13 @@
       "field": "Terrawatts Per 100,000 Population",
       "type": "quantitative",
       "scale": {"type": "log"}
-    }
+    }, 
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "Country"},
+      {"field": "Renewable_Source", "type": "nominal"},
+        {"field": "Population", "type": "quantitative"},
+      {"field": "Terrawatts Per 100,000 Population", "type": "quantitative"}
+    ]
   }
  }
  ]

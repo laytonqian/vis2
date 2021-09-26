@@ -4,18 +4,7 @@
  "height": 500,
  "title": "Renewable Energy Consumption 2018",
  "projection": {"type": "equalEarth"},
-  "params": [
-  {
-    "name": "Year_Selection",
-    "value": 2018,
-    "bind": {"input": "range", "min": 1965, "max": 2018, "step": 1}
-    },
-    {
-    "name": "Renewable_Source_Selection",
-    "value": "Hydro",
-    "bind": {"input": "select", "options": ["Hydro", "Solar", "Wind"]}
-    }
-],
+
  "layer": [
  {
  "data": {
@@ -45,8 +34,6 @@
         "fields": ["Hydro_TW", "Solar_TW", "Wind_TW", "Other_TW", "Total_TW", "Population"]
       }
     },
-    {"filter": "datum.Year == Year_selection"},
-    {"filter": "datum.Renewable Source == Renewable_Source_Selection"},
     {"calculate": "datum.Total_TW / datum.Population * 100000", "as": "Terrawatts Per 100,000 Population"}
   ],
   "projection": {
