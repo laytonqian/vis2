@@ -1,8 +1,12 @@
-#choropleth_map {
-  top: 100px;
-  bottom: 100px;
-  left: 100px;
-  right: 100px;
-  /*height: 1000px;
-	width: 800px;*/
+.page {
+  width: 1200px;
+  background-color: lightgrey;
+  margin: auto;
+}
+.pure-g {
+  margin: 15px;
+}
+
+#title {
+  text-align: center;
 }

@@ -1,19 +1,24 @@
 {
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
- "width": 800,
- "height": 500,
- "title": "Renewable Energy Consumption",
+ "width": 560,
+ "height": 350,
+ "title": "Renewable Energy Consumption Per 100,000 Population",
  "projection": {"type": "equalEarth"},
  "params": [
-  {
-    "name": "Year_Selection",
-    "value": 2018,
-    "bind": {"input": "range", "min": 1965, "max": 2018, "step": 1}
+    {
+      "name": "Year_Selection",
+      "value": 2018,
+      "bind": {
+        "input": "range", "min": 1965, "max": 2018, "step": 1
+      }
     },
     {
-    "name": "Renewable_Source_Selection",
-    "value": "All",
-    "bind": {"input": "select", "options": ["Hydro", "Solar", "Wind", "Other", "All"]}
+      "name": "Renewable_Source_Selection",
+      "value": "All",
+      "bind": {
+        "input": "select", 
+        "options": ["Hydro", "Solar", "Wind", "Other", "All"]
+        }
     }
  ],
   "layer": [
@@ -52,9 +57,14 @@
         "field": "geo",
         "type": "geojson"
       },
-    "color": {"field": "Terrawatts Per 100,000 Population", "type": "quantitative", "scale": {"type": "log"}, "title":"Terrawatts(TWh) Per 100,000 Population"}, 
+    "color": {
+      "field": "Terrawatts Per 100,000 Population", 
+      "type": "quantitative", 
+      "scale": {"type": "symlog"}, 
+      "title":"Terawatt Hours(TWh)"
+    }, 
     "tooltip": [
-      {"field": "Terrawatts Per 100,000 Population", "type": "quantitative", "title": "TWh Per 100,000 Population", "format": ".20f"},
+      {"field": "Terrawatts Per 100,000 Population", "type": "quantitative", "title": "TWh Per 100,000", "format": ".20f"},
       {"field": "Renewable_Source", "type": "nominal", "title": "Renewable Source"},
       {"field": "Country", "type": "nominal", "title": "Country"},
       {"field": "Population", "type": "quantitative"}
