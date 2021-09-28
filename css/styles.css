@@ -10,3 +10,10 @@
 #title {
   text-align: center;
 }
+
+#right {
+  float: right;
+}
+* {
+  font-family: Helvetica, sans-serif;
+}

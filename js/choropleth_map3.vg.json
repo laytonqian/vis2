@@ -1,6 +1,6 @@
 {
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
- "width": 560,
+ "width": 515,
  "height": 350,
  "title": "Renewable Energy Consumption Per 100,000 Population",
  "projection": {"type": "equalEarth"},
@@ -64,7 +64,7 @@
       "title":"Terawatt Hours(TWh)"
     }, 
     "tooltip": [
-      {"field": "Terrawatts Per 100,000 Population", "type": "quantitative", "title": "TWh Per 100,000", "format": ".20f"},
+      {"field": "Terrawatts Per 100,000 Population", "type": "quantitative", "title": "TWh Per 100,000"},
       {"field": "Renewable_Source", "type": "nominal", "title": "Renewable Source"},
       {"field": "Country", "type": "nominal", "title": "Country"},
       {"field": "Population", "type": "quantitative"}

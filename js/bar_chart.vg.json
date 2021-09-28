@@ -1,0 +1,66 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 325,
+    "height": 318,
+    "title": "Top 10% of Renewable Energy Consumption",
+    
+    "data": {
+      "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/data/renewable_energy_population_final_v5.csv"
+    },
+    "transform": [{
+      "aggregate": [{"op": "sum", "field": "Terawatt_Hours", "as": "Terawatt_Hour"}],
+      "groupby": ["Year", "Country"]
+    },
+    {
+      "window": [{"op": "percent_rank", "as": "rank"}],
+      "sort": [{ "field": "Terawatt_Hour", "order": "descending" }]
+    }, 
+                {"filter": "datum.Year == Year_Selection"},
+                {"filter": "datum.rank <= 0.1"}],
+            "encoding": {
+            "x": {
+                "field": "Terawatt_Hour",
+                "type": "quantitative",
+                "title": "Terawatt Hours(TWh)"
+            },
+            "y": {
+                "field": "Country",
+                "type": "nominal",
+                "sort": {"field": "Terawatt_Hour", "op": "sum", "order":"descending"}
+                },
+            "tooltip": [
+                {"field": "Terawatt_Hour", "type": "quantitative", "title": "Terawatt Hours"},
+                {"field": "Country", "type": "nominal"}
+                
+            ] 
+            },
+    "params": [
+        {
+            "name": "Year_Selection",
+            "value": 2018,
+            "bind": {"input": "range", "min": 1965, "max": 2018, "step": 1}
+        }
+    ],
+    "layer": [
+        {   "mark": {
+            "type": "bar"
+
+            }
+        },{
+    "mark": {
+      "type": "text",
+      "align": "left"
+    },
+    "encoding": {
+      "text": {"field": "Terawatt_Hour", "type": "quantitative", "format": ".0f"}
+    }
+  }
+
+        
+          
+      
+        
+    ],
+    
+    "config": {}
+  }
