@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Import Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -27,11 +35,27 @@
       </div>
       <div class="pure-g">
         <div class="pure-u-1-3">
-          <div>Insert Text Here</div>
+          <div>
+            This visualisation is is about Renewable Energy Consumption from the
+            1965-2018. Renewable Energy can be collected from many different
+            sources and the main sources which this visualisation focuses on are
+            hydropower, solar power and wind power.
+          </div>
+        </br>
+          <div>
+            Hydropower is a very mature technology that has been growing steadily for years. While on the other hand, solar and wind
+            power are quite new, experiencing rapid growth since the start of the 21st century.
+          </div>
+        </br>
+          <div>
+            First world European countries consume the most renewable energy
+            when taking population into account whereas overall, the countries with
+            larger gdps consume the most renewable energy.
+          </div>
         </div>
         <div class="pure-u-2-3">
           <div id="right">
-            <div>Insert Graph Here</div>
+            <div id="line_chart"></div>
           </div>
         </div>
       </div>
@@ -46,6 +70,18 @@
           </div>
         </div>
       </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div class="small">Sources:</div>
+          <div class="small">
+            https://www.kaggle.com/mohitkr05/country-population-from-1960-to-2018
+          </div>
+          <div class="small">
+            https://www.kaggle.com/khadeejahalghadeer/renewable-energy-generation-world-1965-to-2018
+          </div>
+        </div>
+      </div>
     </div>
 
     <script type="text/javascript">
@@ -56,19 +92,19 @@
         })
         .catch(console.error);
       var graph2 = "js/line_chart.vg.json";
-      vegaEmbed("#line_chart", graph2)
+      vegaEmbed("#line_chart", graph2, { actions: false })
         .then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         })
         .catch(console.error);
       var graph3 = "js/choropleth_map3.vg.json";
-      vegaEmbed("#choropleth_map3", graph3)
+      vegaEmbed("#choropleth_map3", graph3, { actions: false })
         .then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         })
         .catch(console.error);
       var graph4 = "js/bar_chart.vg.json";
-      vegaEmbed("#bar_chart", graph4)
+      vegaEmbed("#bar_chart", graph4, { actions: false })
         .then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         })

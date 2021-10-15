@@ -1,6 +1,6 @@
 {
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
- "width": 515,
+ "width": 640,
  "height": 350,
  "title": "Renewable Energy Consumption Per 100,000 Population",
  "projection": {"type": "equalEarth"},
@@ -9,7 +9,7 @@
       "name": "Year_Selection",
       "value": 2018,
       "bind": {
-        "input": "range", "min": 1965, "max": 2018, "step": 1
+        "input": "range", "min": 1965, "max": 2018, "step": 1, "name": "Year Selection: "
       }
     },
     {
@@ -17,7 +17,8 @@
       "value": "All",
       "bind": {
         "input": "select", 
-        "options": ["Hydro", "Solar", "Wind", "Other", "All"]
+        "options": ["Hydro", "Solar", "Wind", "Other", "All"],
+        "name": "Renewable Source Selection: "
         }
     }
  ],
@@ -60,7 +61,7 @@
     "color": {
       "field": "Terrawatts Per 100,000 Population", 
       "type": "quantitative", 
-      "scale": {"type": "symlog"}, 
+      "scale": {"type": "symlog", "scheme":"bluegreen"}, 
       "title":"Terawatt Hours(TWh)"
     }, 
     "tooltip": [
@@ -73,8 +74,16 @@
   }
 ],
   "config": {
-
-  }
+        "style": {
+            "cell": {
+                "stroke": "transparent"
+            }
+        },
+        "axis": {"labelFont": "Roboto", "titleFont": "Roboto", "labelFontSize": 10, "titleFontSize":15},
+        "legend": {"labelFont": "Roboto", "titleFont": "Roboto", "labelFontSize": 10, "titleFontSize":12},
+        "mark": {"font": "Roboto", "fontSize": 10},
+        "title": {"font": "Roboto", "subtitleFont": "Roboto", "fontSize":18}
+    }
   
  
 }

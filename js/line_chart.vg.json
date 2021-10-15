@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 480,
-    "height": 300,
+    "width": 600,
+    "height": 225,
     "title": "Renewable Energy Consumption 1965 - 2018",
     
     "data": {
@@ -11,7 +11,7 @@
         {
             "name": "Year_Selection",
             "value": 2018,
-            "bind": {"input": "range", "min": 1965, "max": 2018, "step": 1}
+            "bind": {"input": "range", "min": 1965, "max": 2018, "step": 1, "name": "Year Selection: "}
         },
         {
             "name": "Renewable_Source_Selection",
@@ -26,11 +26,7 @@
     ],
     "layer": [
         {   "mark": {
-            "type": "line",
-            "point": {
-                "filled": false,
-                "fill": "white"
-            }
+            "type": "area"
 
             },
             "transform": [
@@ -41,7 +37,8 @@
             "x": {
                 "field": "Year",
                 "timeUnit": "year",
-                "title": "Year"
+                "title": "Year",
+                "axis": {"grid": false}
             },
             "y": {
                 "aggregate": "sum", "field": "Terawatt_Hours",
@@ -53,7 +50,9 @@
             "color": {
                 "type": "nominal",
                 "field": "Renewable_Source",
-                "title": "Renewable Source"
+                "title": "Renewable Source",
+                "scale": {"scheme":"category10"}
+                
 
             },
             "tooltip": [
@@ -72,5 +71,15 @@
         
     ],
     
-    "config": {}
+    "config": {
+        "style": {
+            "cell": {
+                "stroke": "transparent"
+            }
+        },
+        "axis": {"labelFont": "Roboto", "titleFont": "Roboto", "labelFontSize": 10, "titleFontSize":15},
+        "legend": {"labelFont": "Roboto", "titleFont": "Roboto", "labelFontSize": 10, "titleFontSize":12},
+        "mark": {"font": "Roboto", "fontSize": 10},
+        "title": {"font": "Roboto", "subtitleFont": "Roboto", "fontSize":18}
+    }
   }

@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 325,
-    "height": 318,
+    "width": 350,
+    "height": 350,
     "title": "Top 10% of Renewable Energy Consumption",
     
     "data": {
@@ -22,12 +22,19 @@
                 "field": "Terawatt_Hour",
                 "type": "quantitative",
                 "title": "Terawatt Hours(TWh)"
+                
             },
             "y": {
                 "field": "Country",
                 "type": "nominal",
                 "sort": {"field": "Terawatt_Hour", "op": "sum", "order":"descending"}
                 },
+            "color": {
+              "field": "Terawatt_Hour",
+              "type": "quantitative",
+              "title": "Terawatt Hours(TWh)",
+              "scale": {"type": "symlog", "scheme":"bluegreen"}
+            },
             "tooltip": [
                 {"field": "Terawatt_Hour", "type": "quantitative", "title": "Terawatt Hours"},
                 {"field": "Country", "type": "nominal"}
@@ -38,18 +45,21 @@
         {
             "name": "Year_Selection",
             "value": 2018,
-            "bind": {"input": "range", "min": 1965, "max": 2018, "step": 1}
+            "bind": {"input": "range", "min": 1965, "max": 2018, "step": 1, "name": "Year Selection: "}
         }
     ],
     "layer": [
         {   "mark": {
             "type": "bar"
-
             }
         },{
     "mark": {
       "type": "text",
-      "align": "left"
+      "align": "left",
+      "baseline": "middle",
+      "dx": 5,
+      "fill": "black"
+      
     },
     "encoding": {
       "text": {"field": "Terawatt_Hour", "type": "quantitative", "format": ".0f"}
@@ -62,5 +72,15 @@
         
     ],
     
-    "config": {}
+    "config": {
+        "style": {
+            "cell": {
+                "stroke": "transparent"
+            }
+        },
+        "axis": {"labelFont": "Roboto", "titleFont": "Roboto", "labelFontSize": 10, "titleFontSize":15},
+        "legend": {"disable": true},
+        "mark": {"font": "Roboto", "fontSize": 10},
+        "title": {"font": "Roboto", "subtitleFont": "Roboto", "fontSize":18}
+    }
   }
